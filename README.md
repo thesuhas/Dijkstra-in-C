@@ -1,6 +1,6 @@
 # Dijkstra-in-C
  
-Dijkstra is used to solve a <b>Single-Destination Shortest Path<b> problem to get the shortest path from all vertices in a graph to a given vertex.
+Dijkstra is used to solve a **Single-Destination Shortest Path** problem to get the shortest path from all vertices in a graph to a given vertex.
 
 
 ## Input Format
@@ -13,3 +13,14 @@ The last vertex (the highest numbered vertex) is taken as the Destination.
 ## Output Format
 
 Each line of the output corresponds to: {Node} {Vertices in the path (including Node and Destination)} {Path Length}
+
+## How to Use
+
+Clone this repository and run using the following command: `make -f makefile.mk`<br>
+Input file can be changed in **line 57 in server.c** <br>
+
+> fp = fopen("file_name.txt", "r");<br>
+
+**Note:** To use the `make` command in windows, use Windows Subsystem for Linux
+
+
