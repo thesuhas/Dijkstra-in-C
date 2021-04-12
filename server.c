@@ -27,7 +27,7 @@ Head insert(Head head, int id, int weight)
     new->weight = weight;
     new->next = NULL;
     new->dist = INT_MAX;
-    new->prev = 0; // Setting to 0 as nodes start from 1
+    new->prev = 0; // Setting to 0 as nodes start from 1, 0 indicates no previous node in the path
 
     // If that particular list is empty
     if (head.head == NULL)
@@ -83,8 +83,6 @@ Graph* file(void)
         int weight;
         int vertex;
 
-        //printf("\n\nVertex: %d\n", vertex);
-
         // Now for every given vertex, need to iterate to get pairs of connecting vertex and corresponding weight
         while (token != NULL)
         {
@@ -109,8 +107,6 @@ Graph* file(void)
             }
 
             weight = atoi(token);
-
-            //printf("Node: %d Weight: %d\n", node, weight);
 
             // Inserting to graph
             g->graph[vertex] = insert(g->graph[vertex], node, weight);
@@ -171,12 +167,6 @@ Heap* create_heap(int size)
         // Assigning the previous vertex in the path
         h->heap[i].prev = 0;
     }
-
-    // Test to check whether have been assigned
-    /*for (int i = 0; i < h->n; i ++)
-    {
-        printf("Vertex ID: %d\n", h->heap[i].id);
-    }*/
 
     return h;
 }
@@ -415,15 +405,11 @@ void get_paths(Graph* g)
         {
             while (prev != source)
             {
-                //printf("%d\n", prev);
-                //p->paths[i].head = insert_path(p->paths[i].head, prev);
                 arr[j] = prev;
                 j ++;
                 // Go back to previous node
                 prev = g->graph[prev].prev;
             }
-            //printf("%d\n", prev);
-            //p->paths[i].head = insert_path(p->paths[i].head, prev);
             arr[j] = prev;
         }
 
@@ -437,7 +423,6 @@ void get_paths(Graph* g)
     }
     
     // Print paths
-    //printf("\n\nPaths:\n");
 
     // Temp variable for traversal
     Node* temp;
