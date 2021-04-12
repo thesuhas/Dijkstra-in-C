@@ -1,6 +1,7 @@
 # Dijkstra-in-C
  
-Dijkstra is used to solve a **Single-Destination Shortest Path** problem to get the shortest path from all vertices in a graph to a given vertex.
+Dijkstra's Algorithm is used here to solve a **Single-Destination Shortest Path** problem to get the shortest path from all vertices in a graph to a given vertex.<br>
+Done as part of the Design and Analysis of Algorithms Course (UE19CS251) at PES University, Bangalore.
 
 
 ## Input Format
