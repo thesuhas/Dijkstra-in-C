@@ -123,7 +123,9 @@ void display(Graph* g)
     // Temp to traverse through each list
     Node* temp;
 
-    for (int i = 1; i <= g->n; i ++)
+    printf("Length: %d\n", g->n);
+
+    for (int i = 1; i < g->n; i ++)
     {
         printf("\nHead: %d ", i);
 
@@ -142,4 +144,36 @@ void display(Graph* g)
             }
         }
     }
+}
+
+Heap* create_heap(int size)
+{
+    // Create heap
+    Heap* h = malloc(sizeof(Heap));
+
+    // Assign size
+    h->n = size - 1;
+
+    // Allocate memory for array
+    h->heap = malloc((h->n + 1) * sizeof(Node));
+
+    // As all distances are infinity, order does not matter in heap
+
+    for (int i = 0; i < h->n; i ++)
+    {
+        // Assigning the id
+        h->heap[i]->id = i + 1;
+        // Assigning the distance
+        h->heap[i]->dist = INT_MAX;
+        // Assigning the previous vertex in the path
+        h->heap[i]->prev = 0;
+    }
+
+    // Test to check whether have been assigned
+    for (int i = 0; i < h->n; i ++)
+    {
+        printf("Vertex ID: %d\n", h->heap[i]->id);
+    }
+
+    return h;
 }

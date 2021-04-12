@@ -31,6 +31,13 @@ typedef struct Graph
     Head* graph;
 } Graph;
 
+// Heap
+typedef struct Heap
+{
+    int n;
+    Node** heap;
+} Heap;
+
 // Function to initialise a graph
 Graph* initialise(int size);
 
@@ -42,3 +49,6 @@ Head insert(Head head, int id, int weight);
 
 // Displaying graph
 void display(Graph* g);
+
+// Creation of heap
+Heap* create_heap(int size);
