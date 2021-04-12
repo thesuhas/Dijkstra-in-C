@@ -22,6 +22,6 @@ Input file can be changed in **line 57 in server.c** <br>
 
 > fp = fopen("file_name.txt", "r");<br>
 
-**Note:** To use the `make` command in windows, use Windows Subsystem for Linux
-
+**Note 1:** To use the `make` command in windows, use Windows Subsystem for Linux<br>
+**Note 2:** Uncomment the `display` function in `client.c` to see the graph that has been constructed.
 
