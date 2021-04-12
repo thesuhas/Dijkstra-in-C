@@ -6,5 +6,10 @@ Dijkstra is used to solve a <b>Single-Destination Shortest Path<b> problem to ge
 ## Input Format
 
 The first line of the input file contains the number of vertices in the graph. <br>
-The subsequent lines consist of: Node {vertex, weight of connection to vertex} where the pair of {vertex, weight} can be repeated for every other vertex in the graph. <br>
+The subsequent lines consist of: {Node} {vertex, weight of connection to vertex} where the pair of {vertex, weight} can be repeated for every other vertex in the graph. <br>
 The last vertex (the highest numbered vertex) is taken as the Destination.
+
+
+## Output Format
+
+Each line of the output corresponds to: {Node} {Vertices in the path (including Node and Destination)} {Path Length}
