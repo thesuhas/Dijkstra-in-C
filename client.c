@@ -9,4 +9,6 @@ int main(void)
 
     // Create Heap
     Heap* h = create_heap(g->n);
+
+    g = Dijkstra(g, h);
 }

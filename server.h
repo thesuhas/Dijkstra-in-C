@@ -23,6 +23,7 @@ typedef struct Head
 {
     Node* head;
     int prev; // To hold id of previous vertex in graph
+    int dist; // Distance of shortest path
 } Head;
 
 // Adjlist
@@ -49,6 +50,7 @@ typedef struct Path
 // Array of paths (for all except source vertex)
 typedef struct Paths
 {
+    int n; // Number of vertices
     Path* paths;
 } Paths;
 
@@ -68,7 +70,18 @@ void display(Graph* g);
 Heap* create_heap(int size);
 
 // Used to remove element from priority queue
-Heap* delete(Heap* h);
+Heap* delete(Heap* h, int* del);
 
 // Used to update priority queue
 Heap* update(Heap* h);
+
+// Used to update distances in priority queue
+Heap* dist_update(Heap* h, int id, int dist);
+
+// Initialising path struct
+Paths* initialise_paths(int size);
+
+Graph* Dijkstra(Graph* g, Heap* h);
+
+// Function to get outgoing connection to look at
+Node* outgoing(Graph* g, int* visited, int id);

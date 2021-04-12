@@ -13,6 +13,7 @@ Graph* initialise(int size)
     {
         g->graph[i].head = NULL;
         g->graph[i].prev = 0;
+        g->graph[i].dist = INT_MAX;
     }
 
     return g;
@@ -180,8 +181,10 @@ Heap* create_heap(int size)
     return h;
 }
 
-Heap* delete(Heap* h)
+Heap* delete(Heap* h, int* del)
 {
+    *del = h->heap[0].id;
+
     // Copy next element to previous element
     for (int i = 0; i < (h->n - 1); i ++)
     {
@@ -223,4 +226,111 @@ Heap* update(Heap* h)
         }
     }
     return h;
+}
+
+Paths* initialise_paths(int size)
+{
+    Paths* p = malloc(sizeof(Paths));
+
+    // Number of vertices
+    p->n = size;
+
+    p->paths = malloc(p->n * sizeof(Path));
+
+    for (int i = 0; i < p->n; i ++)
+    {
+        p->paths[i].dist = 0;
+        p->paths[i].head = malloc(sizeof(Node));
+        p->paths[i].head->id = i + 1;
+    }
+
+    return p;
+}
+
+Node* outgoing(Graph* g, int* visited, int id)
+{
+    Node* temp = g->graph[id].head;
+
+    while (temp != NULL)
+    {
+        // If has not been visited
+        if (visited[temp->id] == 0)
+        {
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return NULL;
+}
+
+Heap* dist_update(Heap* h, int id, int dist)
+{
+    // Search for node in heap
+    for (int i = 0; i < h->n; i ++)
+    {
+        if (h->heap[i].id == id)
+        {
+            h->heap[i].dist = dist;
+            break;
+        }
+    }
+
+    h = update(h);
+
+    return h;
+}
+
+Graph* Dijkstra(Graph* g, Heap* h)
+{
+    // Source vertex is vertex with greatest id
+    int source = g->n - 1;
+
+    // Update dist of source vertex to 0, initially it is the last element in the heap
+    h->heap[h->n - 1].dist = 0;
+    g->graph[h->heap[h->n - 1].id].dist = 0;
+
+    // Update heap to reflect this
+    h = update(h);
+
+    // List of vertices whose shortest path has been found
+    int v[g->n];
+    for (int i = 1; i < g->n; i ++)
+    {
+        v[i] = 0;
+    }
+
+    // Update that source vertex's shortest path has been found
+    v[g->n - 1] = 1;
+
+    // Node which has been removed from heap
+    int del;
+
+    Node* n;
+
+    // Iterate through all vertices
+    for (int i = 1; i < (g->n - 1); i ++)
+    {
+        // Get element at start of priority queue
+        h = delete(h, &del);
+
+        // Mark vertix as visited
+        v[del] = 1;
+
+        // Temp variable to get outgoing connections
+        Node* temp = g->graph[del].head;
+
+        while (temp != NULL)
+        {
+            if ((g->graph[del].dist + temp->weight) < (g->graph[temp->id].dist))
+            {
+                // Update dist
+                g->graph[temp->id].dist = g->graph[del].dist + temp->weight;
+                // Update dist in heap
+                h = dist_update(h, temp->id, g->graph[temp->id].dist);
+            }
+            temp = temp->next;
+        }
+    }
+
+    return g;
 }
