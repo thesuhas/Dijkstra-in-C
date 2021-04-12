@@ -327,6 +327,8 @@ Graph* Dijkstra(Graph* g, Heap* h)
                 g->graph[temp->id].dist = g->graph[del].dist + temp->weight;
                 // Update dist in heap
                 h = dist_update(h, temp->id, g->graph[temp->id].dist);
+                // Update previous vertex
+                g->graph[temp->id].prev = del;
             }
             temp = temp->next;
         }
