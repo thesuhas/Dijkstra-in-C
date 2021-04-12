@@ -52,3 +52,9 @@ void display(Graph* g);
 
 // Creation of heap
 Heap* create_heap(int size);
+
+// Used to remove element from priority queue
+Heap* delete(Heap* h);
+
+// Used to update priority queue
+Heap* update(Heap* h);

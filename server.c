@@ -178,3 +178,48 @@ Heap* create_heap(int size)
 
     return h;
 }
+
+Heap* delete(Heap* h)
+{
+    // Copy next element to previous element
+    for (int i = 0; i < (h->n - 1); i ++)
+    {
+        h->heap[i] = h->heap[i + 1];
+    }
+
+    // Update length
+    h->n --;
+
+    return h;
+}
+
+Heap* update(Heap* h)
+{
+    // Sort based on dist
+    // Implemented using bubble sort for ease of coding
+
+    Node temp;// Temp node for swapping
+
+    for (int i = 0; i < h->n - 1; i ++)
+    {
+        int swaps = 0;
+        
+        for (int j = 0; j < (h->n - i - 1); j ++)
+        {
+            if (h->heap[j].dist > h->heap[j + 1].dist)
+            {
+                temp = h->heap[j];
+                h->heap[j] = h->heap[j + 1];
+                h->heap[j + 1] = temp;
+
+                swaps ++;
+            }
+        }
+
+        if (swaps == 0)
+        {
+            break;
+        }
+    }
+    return h;
+}
