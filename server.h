@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <limits.h>
 
 // Node struct
 typedef struct Node
@@ -11,6 +12,10 @@ typedef struct Node
     int weight;
     // Next pointer
     struct Node* next;
+    // Distance of path
+    int dist;
+    // ID of previous vertex
+    int prev;
 } Node;
 
 // Node header

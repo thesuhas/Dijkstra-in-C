@@ -24,6 +24,8 @@ Head insert(Head head, int id, int weight)
     new->id = id;
     new->weight = weight;
     new->next = NULL;
+    new->dist = INT_MAX;
+    new->prev = 0; // Setting to 0 as nodes start from 1
 
     // If that particular list is empty
     if (head.head == NULL)
