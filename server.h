@@ -90,3 +90,6 @@ void get_paths(Graph* g);
 
 // Insert to paths
 Node* insert_path(Node* head, int id);
+
+// Used to reset paths array
+int* reset(int* arr, int size);

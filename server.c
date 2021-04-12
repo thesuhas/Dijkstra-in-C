@@ -76,12 +76,12 @@ Graph* file(void)
     // Iterate through all connections from a given vertix
     while (x = getline(&test, &size, fp) != -1)
     {
-        // First token received is vertex
+        // First token received is the one all have connections to (reversing edges)
         char* token = strtok(test, " ");
-        int vertex = atoi(token);
+        int node = atoi(token);
 
         int weight;
-        int node;
+        int vertex;
 
         //printf("\n\nVertex: %d\n", vertex);
 
@@ -97,7 +97,7 @@ Graph* file(void)
                 break;
             }
 
-            node = atoi(token);
+            vertex = atoi(token);
 
             // Get weight token
             token = strtok(NULL, " ");
@@ -363,6 +363,15 @@ Node* insert_path(Node* head, int id)
     return head;
 }
 
+int* reset(int* arr, int size)
+{
+    for (int i = 1; i < size; i ++)
+    {
+        arr[i] = 0;
+    }
+    return arr;
+}
+
 
 void get_paths(Graph* g)
 {
@@ -373,10 +382,12 @@ void get_paths(Graph* g)
     // Source
     int source = g->n - 1;
 
+    int* arr = malloc(source * sizeof(int));
+
     // Initialise paths with first node as the node itself (only those that have paths)
     for (int i = 1; i < source; i ++)
     {
-        // If a path exists, add to paths list
+        // If a path exists, add to paths array
         if (g->graph[i].prev != 0)
         {
             Node* new = malloc(sizeof(Node));
@@ -396,18 +407,32 @@ void get_paths(Graph* g)
         // Keeps track of prev element
         int prev = g->graph[i].prev;
 
+        arr = reset(arr, source);
+        int j = 0;
+
         // If it has a path
         if (prev != 0)
         {
             while (prev != source)
             {
                 printf("%d\n", prev);
-                p->paths[i].head = insert_path(p->paths[i].head, prev);
+                //p->paths[i].head = insert_path(p->paths[i].head, prev);
+                arr[j] = prev;
+                j ++;
                 // Go back to previous node
                 prev = g->graph[prev].prev;
             }
             printf("%d\n", prev);
-            p->paths[i].head = insert_path(p->paths[i].head, prev);
+            //p->paths[i].head = insert_path(p->paths[i].head, prev);
+            arr[j] = prev;
+        }
+
+        int k = 0;
+
+        while (k <= j)
+        {
+            p->paths[i].head = insert_path(p->paths[i].head, arr[k]);
+            k ++;
         }
     }
     
@@ -434,6 +459,6 @@ void get_paths(Graph* g)
             printf("%d ", temp->id);
             temp = temp->next;
         }
-        printf("\n");
+        printf("Dist: %d\n", g->graph[i].dist);
     }
 }
