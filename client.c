@@ -8,5 +8,5 @@ int main(void)
     display(g);
 
     // Create Heap
-    //Heap* h = create_heap(g->n);
+    Heap* h = create_heap(g->n);
 }

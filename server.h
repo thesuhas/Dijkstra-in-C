@@ -35,7 +35,7 @@ typedef struct Graph
 typedef struct Heap
 {
     int n;
-    Node** heap;
+    Node* heap;
 } Heap;
 
 // Function to initialise a graph

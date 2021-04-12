@@ -144,12 +144,13 @@ void display(Graph* g)
             }
         }
     }
+    printf("\n");
 }
 
 Heap* create_heap(int size)
 {
     // Create heap
-    Heap* h = malloc(sizeof(Heap));
+    Heap* h = (Heap* )malloc(sizeof(Heap));
 
     // Assign size
     h->n = size - 1;
@@ -162,17 +163,17 @@ Heap* create_heap(int size)
     for (int i = 0; i < h->n; i ++)
     {
         // Assigning the id
-        h->heap[i]->id = i + 1;
+        h->heap[i].id = i + 1;
         // Assigning the distance
-        h->heap[i]->dist = INT_MAX;
+        h->heap[i].dist = INT_MAX;
         // Assigning the previous vertex in the path
-        h->heap[i]->prev = 0;
+        h->heap[i].prev = 0;
     }
 
     // Test to check whether have been assigned
     for (int i = 0; i < h->n; i ++)
     {
-        printf("Vertex ID: %d\n", h->heap[i]->id);
+        printf("Vertex ID: %d\n", h->heap[i].id);
     }
 
     return h;
