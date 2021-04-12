@@ -81,7 +81,7 @@ Graph* file(void)
         int weight;
         int node;
 
-        printf("\n\nVertex: %d\n", vertex);
+        //printf("\n\nVertex: %d\n", vertex);
 
         // Now for every given vertex, need to iterate to get pairs of connecting vertex and corresponding weight
         while (token != NULL)
@@ -108,7 +108,7 @@ Graph* file(void)
 
             weight = atoi(token);
 
-            printf("Node: %d Weight: %d\n", node, weight);
+            //printf("Node: %d Weight: %d\n", node, weight);
 
             // Inserting to graph
             g->graph[vertex] = insert(g->graph[vertex], node, weight);
@@ -171,10 +171,10 @@ Heap* create_heap(int size)
     }
 
     // Test to check whether have been assigned
-    for (int i = 0; i < h->n; i ++)
+    /*for (int i = 0; i < h->n; i ++)
     {
         printf("Vertex ID: %d\n", h->heap[i].id);
-    }
+    }*/
 
     return h;
 }
