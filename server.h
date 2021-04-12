@@ -22,6 +22,7 @@ typedef struct Node
 typedef struct Head
 {
     Node* head;
+    int prev; // To hold id of previous vertex in graph
 } Head;
 
 // Adjlist
