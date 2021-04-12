@@ -437,7 +437,7 @@ void get_paths(Graph* g)
     }
     
     // Print paths
-    printf("\n\nPaths:\n");
+    //printf("\n\nPaths:\n");
 
     // Temp variable for traversal
     Node* temp;
