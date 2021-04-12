@@ -8,7 +8,8 @@ Done as part of the Design and Analysis of Algorithms Course (UE19CS251) at PES 
 
 The first line of the input file contains the number of vertices in the graph. <br>
 The subsequent lines consist of: {Node} {vertex, weight of connection to vertex} where the pair of {vertex, weight} can be repeated for every other vertex in the graph. <br>
-The last vertex (the highest numbered vertex) is taken as the Destination.
+The last vertex (the highest numbered vertex) is taken as the Destination.<br>
+[Sample Input File](adjacencylist.txt)
 
 
 ## Output Format
