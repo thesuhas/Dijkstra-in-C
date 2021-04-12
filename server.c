@@ -415,21 +415,21 @@ void get_paths(Graph* g)
         {
             while (prev != source)
             {
-                printf("%d\n", prev);
+                //printf("%d\n", prev);
                 //p->paths[i].head = insert_path(p->paths[i].head, prev);
                 arr[j] = prev;
                 j ++;
                 // Go back to previous node
                 prev = g->graph[prev].prev;
             }
-            printf("%d\n", prev);
+            //printf("%d\n", prev);
             //p->paths[i].head = insert_path(p->paths[i].head, prev);
             arr[j] = prev;
         }
 
         int k = 0;
 
-        while (k <= j)
+        while (k <= j && (arr[j] == source))
         {
             p->paths[i].head = insert_path(p->paths[i].head, arr[k]);
             k ++;
@@ -445,20 +445,20 @@ void get_paths(Graph* g)
     for (int i = 1; i < source; i ++)
     {
         temp = p->paths[i].head;
-
-        printf("Node: %d Path: ", i);
-
-        // If no path
         if (temp == NULL)
         {
-            printf("NO PATH\n");
+            printf("%d NO PATH\n", i);
         }
-
-        while (temp != NULL)
+        else
         {
-            printf("%d ", temp->id);
-            temp = temp->next;
+            printf("%d ", i);
+
+            while (temp != NULL)
+            {
+                printf("%d ", temp->id);
+                temp = temp->next;
+            }
+            printf("%d\n", g->graph[i].dist);
         }
-        printf("Dist: %d\n", g->graph[i].dist);
     }
 }
