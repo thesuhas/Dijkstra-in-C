@@ -11,4 +11,12 @@ int main(void)
     Heap* h = create_heap(g->n);
 
     g = Dijkstra(g, h);
+
+    // Test
+    for (int i = 1; i < g->n; i ++)
+    {
+        printf("Node: %d Prev: %d\n", i, g->graph[i].prev);
+    }
+
+    get_paths(g);
 }

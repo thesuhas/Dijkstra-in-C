@@ -54,7 +54,7 @@ Graph* file(void)
     // Read data from file
     FILE* fp;
 
-    fp = fopen("adjacencylist.txt", "r");
+    fp = fopen("test.txt", "r");
 
     // If file pointer is null, return
     if (fp == NULL)
@@ -335,4 +335,105 @@ Graph* Dijkstra(Graph* g, Heap* h)
     }
 
     return g;
+}
+
+Node* insert_path(Node* head, int id)
+{
+    // Create node to be added
+    Node* new = malloc(sizeof(Node));
+    new->id = id;
+    new->next = NULL;
+
+    // If first node
+    if (head == NULL)
+    {
+        head = new;
+    }
+    else
+    {
+        // Temp node for traversal
+        Node* temp = head;
+
+        while(temp->next != NULL)
+        {
+            temp = temp->next;
+        }
+        temp->next = new;
+    }
+    return head;
+}
+
+
+void get_paths(Graph* g)
+{
+    Paths* p = malloc(sizeof(Paths));
+
+    p->paths = malloc((g->n - 1) * sizeof(Node));
+
+    // Source
+    int source = g->n - 1;
+
+    // Initialise paths with first node as the node itself (only those that have paths)
+    for (int i = 1; i < source; i ++)
+    {
+        // If a path exists, add to paths list
+        if (g->graph[i].prev != 0)
+        {
+            Node* new = malloc(sizeof(Node));
+            new->id = i;
+            new->next = NULL;
+            p->paths[i].head = new; 
+        }
+        else
+        {
+            p->paths[i].head = NULL;
+        }
+    }
+
+    // Iterate over and add path
+    for (int i = 1; i < source; i ++)
+    {
+        // Keeps track of prev element
+        int prev = g->graph[i].prev;
+
+        // If it has a path
+        if (prev != 0)
+        {
+            while (prev != source)
+            {
+                printf("%d\n", prev);
+                p->paths[i].head = insert_path(p->paths[i].head, prev);
+                // Go back to previous node
+                prev = g->graph[prev].prev;
+            }
+            printf("%d\n", prev);
+            p->paths[i].head = insert_path(p->paths[i].head, prev);
+        }
+    }
+    
+    // Print paths
+    printf("\n\nPaths:\n");
+
+    // Temp variable for traversal
+    Node* temp;
+
+    for (int i = 1; i < source; i ++)
+    {
+        temp = p->paths[i].head;
+
+        printf("Node: %d Path: ", i);
+
+        // If no path
+        if (temp == NULL)
+        {
+            printf("NO PATH\n");
+        }
+
+        while (temp != NULL)
+        {
+            printf("%d ", temp->id);
+            temp = temp->next;
+        }
+        printf("\n");
+    }
 }

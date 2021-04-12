@@ -85,3 +85,8 @@ Graph* Dijkstra(Graph* g, Heap* h);
 
 // Function to get outgoing connection to look at
 Node* outgoing(Graph* g, int* visited, int id);
+
+void get_paths(Graph* g);
+
+// Insert to paths
+Node* insert_path(Node* head, int id);
