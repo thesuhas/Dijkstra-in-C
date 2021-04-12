@@ -39,6 +39,19 @@ typedef struct Heap
     Node* heap;
 } Heap;
 
+// Path (created for easy output generation)
+typedef struct Path
+{
+    Node* head;
+    int dist; 
+} Path;
+
+// Array of paths (for all except source vertex)
+typedef struct Paths
+{
+    Path* paths;
+} Paths;
+
 // Function to initialise a graph
 Graph* initialise(int size);
 
