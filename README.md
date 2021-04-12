@@ -12,7 +12,8 @@ The last vertex (the highest numbered vertex) is taken as the Destination.
 
 ## Output Format
 
-Each line of the output corresponds to: {Node} {Vertices in the path (including Node and Destination)} {Path Length}
+Each line of the output corresponds to: {Node} {Vertices in the path (including Node and Destination)} {Path Length} <br>
+In case there is no path, "NO PATH" is printed
 
 ## How to Use
 
