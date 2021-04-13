@@ -83,9 +83,7 @@ Paths* initialise_paths(int size);
 
 Graph* Dijkstra(Graph* g, Heap* h);
 
-// Function to get outgoing connection to look at
-Node* outgoing(Graph* g, int* visited, int id);
-
+// To get the paths
 void get_paths(Graph* g);
 
 // Insert to paths

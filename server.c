@@ -237,22 +237,6 @@ Paths* initialise_paths(int size)
     return p;
 }
 
-Node* outgoing(Graph* g, int* visited, int id)
-{
-    Node* temp = g->graph[id].head;
-
-    while (temp != NULL)
-    {
-        // If has not been visited
-        if (visited[temp->id] == 0)
-        {
-            return temp;
-        }
-        temp = temp->next;
-    }
-    return NULL;
-}
-
 Heap* dist_update(Heap* h, int id, int dist)
 {
     // Search for node in heap
