@@ -1,4 +1,15 @@
 # Dijkstra-in-C
+
+<p align="center">
+    <a href="https://github.com/thesuhas/Dijkstra-in-C/issues" alt="issues">
+    <img alt="GitHub forks" src="https://img.shields.io/github/issues/thesuhas/Dijkstra-in-C"></a>
+    <a href="https://github.com/thesuhas/Dijkstra-in-C/stargazers" alt="Stars">
+    <img alt="GitHub stars" src="https://img.shields.io/github/stars/thesuhas/Dijkstra-in-C"></a>
+    <img alt="Github license" src="https://img.shields.io/github/license/thesuhas/Dijkstra-in-C"></a>
+    <a href="https://github.com/thesuhas/Dijkstra-in-C/contributors" alt="Contributors">
+    <img src="https://img.shields.io/github/contributors/thesuhas/Dijkstra-in-C"/></a>
+
+</p>
  
 Dijkstra's Algorithm is used here to solve a **Single-Destination Shortest Path** problem to get the shortest path from all vertices in a graph to a given vertex.<br>
 Done as part of the Design and Analysis of Algorithms Course (UE19CS251) at PES University, Bangalore.
